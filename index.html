@@ -1,56 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Calculadora de Despesas</title>
-  <link rel="stylesheet" href="estilo.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Despesas</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
+
 <body>
     <button id="toggle-theme" style="margin-bottom: 10px;">🌙 Tema Escuro</button>
 
-  <div class="container">
-    <h1><img class="logo" src="images/logoMinhasDespesas.png" alt="logoMinhasDespesas" width="100"></h1>
+    <div class="container">
+        <h1><img class="logo" src="images/logoMinhasDespesas.png" alt="logoMinhasDespesas" width="100"></h1>
 
-    <form id="expense-form">
-      <input type="text" id="description" placeholder="Descrição" required />
-      <input type="number" id="amount" placeholder="Valor (R$)" required />
-      <input type="date" id="date" required />
-      <select id="category" required>
-        <option value="" disabled selected>Selecione uma categoria</option>
-        <option value="Alimentação">Alimentação</option>
-        <option value="Transporte">Transporte</option>
-        <option value="Lazer">Lazer</option>
-        <option value="Saúde">Saúde</option>
-        <option value="Outros">Outros</option>
-      </select>
-      
-      <button type="submit">Adicionar</button>
-    </form>
+        <form id="expense-form">
+            <div id="message" style="margin-top: 10px;"></div>
 
-    <h2>Despesas</h2>
-    <button onclick="exportToCSV()" style="margin-bottom: 20px;">Exportar para CSV</button>
+            <input type="text" id="description" placeholder="Descrição" required />
+            <input type="number" id="amount" placeholder="Valor (R$)" required />
+            <input type="date" id="date" required />
+            <select id="category" required>
+                <option value="" disabled selected>Selecione uma categoria</option>
+                <option value="Alimentação">Alimentação</option>
+                <option value="Transporte">Transporte</option>
+                <option value="Lazer">Lazer</option>
+                <option value="Saúde">Saúde</option>
+                <option value="Outros">Outros</option>
+            </select>
 
-    <div style="margin-bottom: 20px;">
-        <input type="text" id="filterText" placeholder="Filtrar por descrição">
-        <input type="date" id="startDate">
-        <input type="date" id="endDate">
-        <button onclick="applyFilters()">Filtrar</button>
-        <button onclick="clearFilters()">Limpar</button>
-      </div>
-      
-    <ul id="expense-list"></ul>
+            <button type="submit">Adicionar</button>
+        </form>
 
-    <h3>Gráfico de Gastos</h3>
-<canvas id="expenseChart" width="400" height="400"></canvas>
+        <h2>Despesas</h2>
+        <button onclick="exportToCSV()" style="margin-bottom: 20px;">
+            <i class="fa-solid fa-file-export"></i> Exportar
+        </button>
 
 
-    <div class="total">
-      <span id="total">0.00</span>
+        <div style="margin-bottom: 20px;">
+            <input type="text" id="filterText" placeholder="Filtrar por descrição">
+            <input type="date" id="startDate">
+            <input type="date" id="endDate">
+            <button onclick="applyFilters()">Filtrar</button>
+            <button onclick="clearFilters()">Limpar</button>
+        </div>
+
+        <ul id="expense-list"></ul>
+
+        <h3>Gráfico de Gastos</h3>
+        <canvas id="expenseChart" width="400" height="400"></canvas>
+
+
+        <div class="total">
+            <span id="total">0.00</span>
+        </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
