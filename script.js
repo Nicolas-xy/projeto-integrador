@@ -1,5 +1,7 @@
 let isEditing = false;
 let currentEditIndex = null;
+let expenseChart = null;
+let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 
 const form = document.getElementById('expense-form');
 const descriptionInput = document.getElementById('description');
@@ -12,9 +14,6 @@ const filterText = document.getElementById('filterText');
 const startDate = document.getElementById('startDate');
 const endDate = document.getElementById('endDate');
 const themeToggleButton = document.getElementById('toggle-theme');
-
-let expenseChart = null;
-let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 
 function saveExpenses() {
     localStorage.setItem('expenses', JSON.stringify(expenses));

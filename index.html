@@ -8,18 +8,15 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
 
 <body>
     <button id="toggle-theme" style="margin-bottom: 10px;">🌙 Tema Escuro</button>
-
     <div class="container">
         <h1><img class="logo" src="images/logoMinhasDespesas.png" alt="logoMinhasDespesas" width="100"></h1>
 
         <form id="expense-form">
             <div id="message" style="margin-top: 10px;"></div>
-
             <input type="text" id="description" placeholder="Descrição" required />
             <input type="number" id="amount" placeholder="Valor (R$)" required />
             <input type="date" id="date" required />
@@ -31,7 +28,6 @@
                 <option value="Saúde">Saúde</option>
                 <option value="Outros">Outros</option>
             </select>
-
             <button type="submit">Adicionar</button>
         </form>
 
@@ -39,7 +35,6 @@
         <button onclick="exportToCSV()" style="margin-bottom: 20px;">
             <i class="fa-solid fa-file-export"></i> Exportar
         </button>
-
 
         <div style="margin-bottom: 20px;">
             <input type="text" id="filterText" placeholder="Filtrar por descrição">
@@ -54,13 +49,10 @@
         <h3>Gráfico de Gastos</h3>
         <canvas id="expenseChart" width="400" height="400"></canvas>
 
-
         <div class="total">
             <span id="total">0.00</span>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
-
 </html>
