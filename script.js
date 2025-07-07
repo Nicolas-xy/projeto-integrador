@@ -14,6 +14,8 @@ const filterText = document.getElementById('filterText');
 const startDate = document.getElementById('startDate');
 const endDate = document.getElementById('endDate');
 const themeToggleButton = document.getElementById('toggle-theme');
+const filterCategory = document.getElementById('filterCategory');
+
 
 function saveExpenses() {
     localStorage.setItem('expenses', JSON.stringify(expenses));
@@ -41,8 +43,9 @@ function renderExpenses(filteredExpenses = expenses) {
         li.innerHTML = `
       ${expense.date} - ${expense.description} - ${expense.category} - ${formatCurrency(expense.amount)}
       <div>
-        <button onclick="editExpense(${index})"><i class="fa-solid fa-pen"></i></button>
-        <button onclick="removeExpense(${index})"><i class="fa-solid fa-trash"></i></button>
+        <button onclick="editExpense(${index})" class="btn"><i class="fa-solid fa-pen"></i></button>
+        <button onclick="removeExpense(${index})" class="btn"><i class="fa-solid fa-trash"></i></button>
+
       </div>
     `;
         expenseList.appendChild(li);
@@ -77,26 +80,32 @@ function applyFilters() {
     const text = filterText.value.toLowerCase();
     const start = startDate.value;
     const end = endDate.value;
-
+    const category = filterCategory.value;
+  
     const filtered = expenses.filter(expense => {
-        const matchesText = expense.description.toLowerCase().includes(text);
-        const inDateRange =
-            (!start || expense.date >= start) &&
-            (!end || expense.date <= end);
-
-        return matchesText && inDateRange;
+      const matchesText = expense.description.toLowerCase().includes(text);
+      const inDateRange =
+        (!start || expense.date >= start) &&
+        (!end || expense.date <= end);
+      const matchesCategory =
+        !category || expense.category === category;
+  
+      return matchesText && inDateRange && matchesCategory;
     });
-
+  
     renderExpenses(filtered);
 }
+  
 
 function clearFilters() {
     filterText.value = '';
     startDate.value = '';
     endDate.value = '';
+    filterCategory.value = '';
     renderExpenses();
     updateChart();
-}
+  }
+  
 
 function updateChart() {
     const grouped = {};

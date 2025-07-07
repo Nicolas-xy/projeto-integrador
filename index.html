@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <title>Calculadora de Despesas</title>
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -11,9 +12,11 @@
 </head>
 
 <body>
-    <button id="toggle-theme" style="margin-bottom: 10px;">🌙 Tema Escuro</button>
+    <button id="toggle-theme" class="btn" style="margin-bottom: 10px;">🌙 Tema Escuro</button>
     <div class="container">
-        <h1><img class="logo" src="images/logoMinhasDespesas.png" alt="logoMinhasDespesas" width="100"></h1>
+        <div class="logo">
+            <img src="images/logoMinhasDespesas.png" alt="logoMinhasDespesas" width="150">
+        </div>
 
         <form id="expense-form">
             <div id="message" style="margin-top: 10px;"></div>
@@ -32,16 +35,24 @@
         </form>
 
         <h2>Despesas</h2>
-        <button onclick="exportToCSV()" style="margin-bottom: 20px;">
-            <i class="fa-solid fa-file-export"></i> Exportar
-        </button>
+        <button onclick="exportToCSV()" class="btn"><i class="fa-solid fa-file-export"></i> Exportar</button>
+
 
         <div style="margin-bottom: 20px;">
             <input type="text" id="filterText" placeholder="Filtrar por descrição">
             <input type="date" id="startDate">
             <input type="date" id="endDate">
-            <button onclick="applyFilters()">Filtrar</button>
-            <button onclick="clearFilters()">Limpar</button>
+            <select id="filterCategory">
+                <option value="">Todas as categorias</option>
+                <option value="Alimentação">Alimentação</option>
+                <option value="Transporte">Transporte</option>
+                <option value="Lazer">Lazer</option>
+                <option value="Saúde">Saúde</option>
+                <option value="Outros">Outros</option>
+              </select>
+              
+            <button onclick="applyFilters()" class="btn">Filtrar</button>
+            <button onclick="clearFilters()" class="btn">Limpar</button>
         </div>
 
         <ul id="expense-list"></ul>
